@@ -28,7 +28,6 @@ function Products() {
                 rating: 5,
                 numOfReviews: 2
             },
-
         ];
     };
 
@@ -39,9 +38,12 @@ function Products() {
     return (
         <div>
             <h1>Products</h1>
-            {(products && products.length > 0) && (
+            {listProducts.length > 0 &&
                 <ul>{listProducts}</ul>
-            )}
+            }
+            {listProducts.length === 0 &&
+                <p>No Products to display.</p>
+            }
         </div>
     );
 }
