@@ -44,6 +44,11 @@ function Products() {
             {listProducts.length === 0 &&
                 <p>No Products to display.</p>
             }
+            {listProducts.length > 0 ? (
+                <p>{`Total of ${listProducts.length} products.`}</p>
+            ) : (
+                <p>Total of 0 products.</p>
+            )}
         </div>
     );
 }
