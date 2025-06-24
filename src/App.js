@@ -1,10 +1,13 @@
 import Products from "./Products";
+import { Button } from "react-bootstrap";
 
 function formatName(user) {
     return user.firstName + ' ' + user.lastName;
 }
 
 function App() {
+    const isValid = true;
+
     const user = {
         firstName: 'Fabiano',
         lastName: 'Oliveira',
@@ -15,6 +18,7 @@ function App() {
         <div>
             <h1>Hello, {formatName(user)}</h1> <img src={user.imageUrl} alt={formatName(user)} />
             <Products />
+            <Button variant="danger" disabled={!isValid}>Default</Button>
         </div>
     );
 }
