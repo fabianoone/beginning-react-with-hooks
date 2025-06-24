@@ -25,6 +25,7 @@ function App() {
             <Rating rating='3' />
             <Rating rating='4' />
             <Rating rating='5' />
+            <Rating />
         </div>
     );
 }
