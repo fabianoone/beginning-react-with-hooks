@@ -8,33 +8,33 @@ function Rating(props) {
         <div>
             <h1>Rating: {rating}</h1>
             {rating >= 1 ? (
-                <IoIosStar />
+                <IoIosStar onClick={() => setRating(1)} />
             ) : (
-                <IoIosStarOutline />
+                <IoIosStarOutline onClick={() => setRating(1)} />
             )}
 
             {rating >= 2 ? (
-                <IoIosStar />
+                <IoIosStar onClick={() => setRating(2)} />
             ) : (
-                <IoIosStarOutline />
+                <IoIosStarOutline onClick={() => setRating(2)} />
             )}
 
             {rating >= 3 ? (
-                <IoIosStar />
+                <IoIosStar onClick={() => setRating(3)} />
             ) : (
-                <IoIosStarOutline />
+                <IoIosStarOutline onClick={() => setRating(3)} />
             )}
 
             {rating >= 4 ? (
-                <IoIosStar />
+                <IoIosStar onClick={() => setRating(4)} />
             ) : (
-                <IoIosStarOutline />
+                <IoIosStarOutline onClick={() => setRating(4)} />
             )}
 
             {rating >= 5 ? (
-                <IoIosStar />
+                <IoIosStar onClick={() => setRating(5)} />
             ) : (
-                <IoIosStarOutline />
+                <IoIosStarOutline onClick={() => setRating(5)} />
             )}
         </div>
     );
