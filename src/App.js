@@ -1,6 +1,6 @@
 import Products from "./Products";
 import { Button } from "react-bootstrap";
-import Rating from "./Rating";
+import JumbotronComponent from "./JumbotronComponent";
 
 function formatName(user) {
     return user.firstName + ' ' + user.lastName;
@@ -17,6 +17,9 @@ function App() {
 
     return (
         <div>
+            <JumbotronComponent>
+                Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.
+            </JumbotronComponent>
             <h1>Hello, {formatName(user)}</h1> <img src={user.imageUrl} alt={formatName(user)} />
             <Products />
             <Button variant="danger" disabled={!isValid}>Default</Button>
