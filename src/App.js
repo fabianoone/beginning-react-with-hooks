@@ -1,5 +1,6 @@
 import Products from "./Products";
 import { Button } from "react-bootstrap";
+import Rating from "./Rating";
 
 function formatName(user) {
     return user.firstName + ' ' + user.lastName;
@@ -19,6 +20,11 @@ function App() {
             <h1>Hello, {formatName(user)}</h1> <img src={user.imageUrl} alt={formatName(user)} />
             <Products />
             <Button variant="danger" disabled={!isValid}>Default</Button>
+            <Rating rating='1' />
+            <Rating rating='2' />
+            <Rating rating='3' />
+            <Rating rating='4' />
+            <Rating />
         </div>
     );
 }
