@@ -64,6 +64,8 @@ function UserForm() {
                         We'll never share your email with anyone else.
                     </Form.Text>
                 </Form.Group>
+                {emailError.length > 0 &&
+                    <Alert variant="danger">{emailError}</Alert> }
 
                 <Form.Group controlId="formBasicPassword">
                     <Form.Label column="sm">Password</Form.Label>
@@ -73,17 +75,14 @@ function UserForm() {
                         onChange={event =>setPassword(event.target.value)}
                         value={password}
                     />
+                    <br/ >
                     <Button variant="primary" type="submit">
                         Submit
                     </Button>
                 </Form.Group>
+                {passwordError.length > 0 &&
+                    <Alert variant="danger">{passwordError}</Alert> }
             </Form>
-            <br />
-            {emailError.length > 0 &&
-                <Alert variant="danger">{emailError}</Alert> }
-            {passwordError.length > 0 &&
-                <Alert variant="danger">{passwordError}</Alert> }
-
         </div>
     );
 }
