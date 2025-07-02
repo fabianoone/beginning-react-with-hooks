@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Alert } from 'react-bootstrap';
 
 function UserForm() {
     const [email, setEmail] = useState("");
@@ -17,7 +17,7 @@ function UserForm() {
         else if (email.length < 6) {
             setEmailError('Email should be minimum 6 characters');
         }
-        else if (email.indexOf(' ') >= 0) {
+        else if (email.indexOf('') >= 0) {
             setEmailError('Email cannot contain spaces');
         }
         else {
@@ -58,9 +58,9 @@ function UserForm() {
                 </Form.Group>
             </Form>
             <br />
-            Email entered: {email.length}
-            <br />
-            Password entered: {password}
+            {emailError.length > 0 &&
+                <Alert variant="danger">{emailError}</Alert> }
+
         </div>
     );
 }
