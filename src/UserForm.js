@@ -75,7 +75,7 @@ function UserForm() {
                         onChange={event =>setPassword(event.target.value)}
                         value={password}
                     />
-                    <br/ >
+                    <br />
                     <Button variant="primary" type="submit">
                         Submit
                     </Button>
