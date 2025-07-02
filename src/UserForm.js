@@ -43,6 +43,8 @@ function UserForm() {
 
         if (emailValid && passwordValid) {
             alert('Email: ' + email + '\nPassword:'  + password);
+            setEmail("");
+            setPassword("");
         }
 
     }
@@ -56,6 +58,7 @@ function UserForm() {
                         type="email"
                         placeholder="Enter email"
                         onChange={event => setEmail(event.target.value)}
+                        value={email}
                     />
                     <Form.Text className="text-muted">
                         We'll never share your email with anyone else.
@@ -68,6 +71,7 @@ function UserForm() {
                         type="password"
                         placeholder="Password"
                         onChange={event =>setPassword(event.target.value)}
+                        value={password}
                     />
                     <Button variant="primary" type="submit">
                         Submit
