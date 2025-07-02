@@ -10,6 +10,7 @@ function UserForm() {
     const handleSubmit = event => {
         event.preventDefault();
         let emailValid = false;
+        let passwordValid = false;
 
         if (email.length === 0) {
             setEmailError('Email is required');
@@ -17,17 +18,33 @@ function UserForm() {
         else if (email.length < 6) {
             setEmailError('Email should be minimum 6 characters');
         }
-        else if (email.indexOf('') >= 0) {
+        else if (email.indexOf(' ') >= 0) {
             setEmailError('Email cannot contain spaces');
         }
         else {
             setEmailError('')
-            emailValid = true
+            emailValid = true;
         }
 
-        if (emailValid) {
+
+        if (password.length === 0) {
+            setPasswordError('Password is required');
+        }
+        else if (password.length < 3) {
+            setPasswordError('Password should be minimum 3 characters');
+        }
+        else if (password.indexOf(' ') >= 0) {
+            setPasswordError('Password cannot contain spaces');
+        }
+        else {
+            setPasswordError('');
+            passwordValid = true;
+        }
+
+        if (emailValid && passwordValid) {
             alert('Email: ' + email + '\nPassword:'  + password);
         }
+
     }
 
     return (
@@ -60,6 +77,8 @@ function UserForm() {
             <br />
             {emailError.length > 0 &&
                 <Alert variant="danger">{emailError}</Alert> }
+            {passwordError.length > 0 &&
+                <Alert variant="danger">{passwordError}</Alert> }
 
         </div>
     );
