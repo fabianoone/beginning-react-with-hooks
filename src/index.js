@@ -5,16 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export const UserContext = React.createContext();
-const username = 'Fabiano';
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <UserContext.Provider value={username}>
         <App />
-    </UserContext.Provider>
   </React.StrictMode>
 );
 
