@@ -1,10 +1,11 @@
-import './App.css';
-import NavBar from './Navbar';
+import React, { useContext } from 'react';
+import { UserContext } from './index';
 
 function App() {
+    const value = useContext(UserContext);
   return (
     <div>
-        <NavBar />
+        Received, {value}
     </div>
   );
 }
