@@ -26,8 +26,8 @@ function todosReducer(state, action) {
             const filteredTodoState = state.todos.filter( todo => todo.id !== action.payload.id);
             return {...state, todos: filteredTodoState};
         case 'add':
-            const newToDo = {id: uuidv4(), text: action.payload} // add new todo onto array
-            const addedToDos = [...state.todos, newToDo] // spread our state an assign todos
+            // const newToDo = {id: uuidv4(), text: action.payload} // add new todo onto array
+            const addedToDos = [...state.todos, action.payload] // spread our state an assign todos
             return {...state, todos: addedToDos};
         case 'edit':
             const updatedToDo = {...action.payload};

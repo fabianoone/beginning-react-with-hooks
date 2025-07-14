@@ -3,6 +3,7 @@ import { TodosContext } from "./App";
 import { Button, Form, Table } from "react-bootstrap";
 import useAPI from "./useAPI";
 import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 
 function ToDoList() {
     // receive state and dispatch from index.js
@@ -19,14 +20,16 @@ function ToDoList() {
         dispatch({ type: "get", payload: savedTodos });
     }, [savedTodos]); // dispatch whoever savedTodods changes
 
-    const handleSubmit = event => {
+    const handleSubmit = async event => {
         event.preventDefault();
         if(editMode) {
             dispatch({ type: 'edit', payload: {...editTodo, text: todoText}})
             setEditMode(false)
             setEditTodo(null)
         } else {
-            dispatch({ type: 'add', payload: todoText })
+            const newToDo = {id: uuidv4(), text: todoText};
+            await axios.post(endpoint, newToDo);
+            dispatch({ type: 'add', payload: newToDo });
         }
         setTodoText('') // to clear field after adding
     };
