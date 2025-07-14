@@ -23,9 +23,10 @@ function ToDoList() {
     const handleSubmit = async event => {
         event.preventDefault();
         if(editMode) {
-            dispatch({ type: 'edit', payload: {...editTodo, text: todoText}})
-            setEditMode(false)
-            setEditTodo(null)
+            await axios.patch(endpoint + editTodo.id, { text: todoText });
+            dispatch({ type: 'edit', payload: {...editTodo, text: todoText}});
+            setEditMode(false);
+            setEditTodo(null);
         } else {
             const newToDo = {id: uuidv4(), text: todoText};
             await axios.post(endpoint, newToDo);
