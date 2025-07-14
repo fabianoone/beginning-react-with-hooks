@@ -1,6 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { TodosContext } from "./App";
 import { Button, Form, Table } from "react-bootstrap";
+import useAPI from "./useAPI";
 
 function ToDoList() {
     // receive state and dispatch from index.js
@@ -9,6 +10,13 @@ function ToDoList() {
     const [editMode, setEditMode] = useState(false);
     const [editTodo, setEditTodo] = useState(null);
     const buttonTitle = editMode ? 'Edit' : 'Add';
+
+    const endpoint = "http://localhost:3000/todos/";
+    const savedTodos = useAPI(endpoint);
+
+    useEffect(() => {
+        dispatch({ type: "get", payload: savedTodos });
+    }, [savedTodos]); // dispatch whoever savedTodods changes
 
     const handleSubmit = event => {
         event.preventDefault();

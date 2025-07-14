@@ -3,9 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import ToDoList from "./ToDoList";
 
 const todosInitialState = {
-    todos: [
-        
-    ]
+    todos: []
 };
 
 export const TodosContext = React.createContext();
@@ -22,6 +20,8 @@ function App() {
 
 function todosReducer(state, action) {
     switch(action.type) {
+        case 'get':
+            return {...state, todos: action.payload};
         case 'delete':
             const filteredTodoState = state.todos.filter( todo => todo.id !== action.payload.id);
             return {...state, todos: filteredTodoState};
