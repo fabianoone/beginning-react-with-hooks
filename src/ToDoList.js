@@ -67,7 +67,7 @@ function ToDoList() {
                                     setEditMode(true)
                                     setEditTodo(todo)
                                 }}>
-                                    Edit
+                                    <Button variant="link">Edit</Button>
                             </td>
                             <td 
                                 style={{ cursor: 'pointer'}} 
@@ -76,7 +76,7 @@ function ToDoList() {
                                     dispatch({ type: 'delete', payload: todo })
                                 }}
                             >
-                                    Delete
+                                    <Button variant="link">Delete</Button>
                             </td>
                         </tr>
                     ))}
