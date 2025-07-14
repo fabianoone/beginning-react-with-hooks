@@ -4,9 +4,7 @@ import ToDoList from "./ToDoList";
 
 const todosInitialState = {
     todos: [
-        { id: 1, text: "finishing writing hooks chapter" },
-        { id: 2, text: "play with kids" },
-        { id: 3, text: "read bible" },
+        
     ]
 };
 
