@@ -9,6 +9,8 @@ function ToDoList() {
 
     const handleSubmit = event => {
         event.preventDefault();
+        dispatch({ type: 'add', payload: todoText })
+        setTodoText('') // to clear field after adding
     };
 
     return (
