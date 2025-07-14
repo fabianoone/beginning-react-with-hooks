@@ -6,10 +6,19 @@ function ToDoList() {
     // receive state and dispatch from index.js
     const {state, dispatch} = useContext(TodosContext);
     const [todoText, setTodoText] = useState('');
+    const [editMode, setEditMode] = useState(false);
+    const [editTodo, setEditTodo] = useState(null);
+    const buttonTitle = editMode ? 'Edit' : 'Add';
 
     const handleSubmit = event => {
         event.preventDefault();
-        dispatch({ type: 'add', payload: todoText })
+        if(editMode) {
+            dispatch({ type: 'edit', payload: {...editTodo, text: todoText}})
+            setEditMode(false)
+            setEditTodo(null)
+        } else {
+            dispatch({ type: 'add', payload: todoText })
+        }
         setTodoText('') // to clear field after adding
     };
 
@@ -24,7 +33,7 @@ function ToDoList() {
                         value={todoText} 
                     />
                 </Form.Group>
-                <Button variant="primary" type="submit">Submit</Button>
+                <Button variant="primary" type="submit">{buttonTitle}</Button>
             </Form>
             <Table striped bordered hover>
                 <thead>
@@ -38,8 +47,20 @@ function ToDoList() {
                     {state.todos.map(todo => (
                         <tr key={todo.id}>
                             <td>{todo.text}</td>
-                            <td style={{ cursor: 'pointer'}}>Edit</td>
-                            <td style={{ cursor: 'pointer'}} onClick={() => dispatch({ type: 'delete', payload: todo})}>Delete</td>
+                            <td 
+                                style={{ cursor: 'pointer'}}
+                                onClick={() => {
+                                    setTodoText(todo.text)
+                                    setEditMode(true)
+                                    setEditTodo(todo)
+                                }}>
+                                    Edit
+                            </td>
+                            <td 
+                                style={{ cursor: 'pointer'}} 
+                                onClick={() => dispatch({ type: 'delete', payload: todo})}>
+                                    Delete
+                            </td>
                         </tr>
                     ))}
                 </tbody>

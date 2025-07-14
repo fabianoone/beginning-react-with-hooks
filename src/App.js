@@ -31,6 +31,15 @@ function todosReducer(state, action) {
             const newToDo = {id: uuidv4(), text: action.payload} // add new todo onto array
             const addedToDos = [...state.todos, newToDo] // spread our state an assign todos
             return {...state, todos: addedToDos};
+        case 'edit':
+            const updatedToDo = {...action.payload};
+            const updatedToDoIndex = state.todos.findIndex(t => t.id === action.payload.id);
+            const updatedToDos = [
+                ...state.todos.slice(0, updatedToDoIndex),
+                updatedToDo,
+                ...state.todos.slice(updatedToDoIndex + 1)
+            ];
+            return {...state, todos: updatedToDos};
         default:
             return todosInitialState
     }
